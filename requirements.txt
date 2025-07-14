@@ -1,0 +1,25 @@
+# DSA-X GODMODE++ Requirements
+# Core dependencies for real-time DSA problem solving
+
+# Screen capture and OCR
+opencv-python>=4.8.0
+pytesseract>=0.3.10
+mss>=9.0.1
+Pillow>=10.0.0
+
+# Voice recognition and audio processing
+openai-whisper>=20231117
+pyaudio>=0.2.11
+numpy>=1.24.0
+
+# Text processing and utilities
+regex>=2023.8.8
+
+# Optional: For better performance
+# torch>=2.0.0  # Uncomment if you want to use GPU acceleration for Whisper
+# torchaudio>=2.0.0  # Uncomment if you want to use GPU acceleration for Whisper
+
+# Development and testing (optional)
+# pytest>=7.4.0
+# black>=23.0.0
+# flake8>=6.0.0
