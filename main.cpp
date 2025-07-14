@@ -16,9 +16,19 @@
 #include <iomanip>
 
 #include "boot/dsax_controller.cpp"
+#include "stealth/phantom_cloak.cpp"
+#include "ai/genius_brain.cpp" 
+#include "overlay/quantum_overlay.cpp"
+#include "ai/psychic_analyzer.cpp"
 
 // Global controller instance for signal handling
 std::unique_ptr<DSAXController> g_controller = nullptr;
+
+// Global PHANTOM MODE systems
+std::unique_ptr<PhantomCloak> phantomCloak;
+std::unique_ptr<GeniusBrain> geniusBrain;
+std::unique_ptr<QuantumOverlay> quantumOverlay;
+std::unique_ptr<PsychicAnalyzer> psychicAnalyzer;
 
 // Signal handler for graceful shutdown
 void signalHandler(int signal) {
@@ -235,6 +245,67 @@ bool checkDependencies() {
     return allOk;
 }
 
+bool initializePhantomMode() {
+    std::cout << "🔮 INITIALIZING PHANTOM MODE SYSTEMS..." << std::endl;
+    
+    // Initialize Phantom Cloaking
+    phantomCloak = std::make_unique<PhantomCloak>();
+    if (!phantomCloak->activatePhantom()) {
+        std::cerr << "❌ Failed to activate phantom cloaking" << std::endl;
+        return false;
+    }
+    
+    // Initialize Genius Brain
+    geniusBrain = std::make_unique<GeniusBrain>();
+    geniusBrain->setHumannessLevel(0.95);
+    geniusBrain->setConfidenceLevel(0.85);
+    
+    // Initialize Quantum Overlay
+    quantumOverlay = std::make_unique<QuantumOverlay>();
+    if (!quantumOverlay->activateQuantumField()) {
+        std::cerr << "❌ Failed to activate quantum overlay" << std::endl;
+        return false;
+    }
+    quantumOverlay->enableScreenCaptureEvasion(true);
+    
+    // Initialize Psychic Analyzer
+    psychicAnalyzer = std::make_unique<PsychicAnalyzer>();
+    if (!psychicAnalyzer->activatePsychicMode()) {
+        std::cerr << "❌ Failed to activate psychic mode" << std::endl;
+        return false;
+    }
+    psychicAnalyzer->enableTelepathicInfluence(true);
+    
+    std::cout << "✅ PHANTOM MODE SYSTEMS ACTIVE - SUPERNATURAL INTELLIGENCE ENABLED" << std::endl;
+    return true;
+}
+
+std::string processQuestionWithPhantomMode(const std::string& question) {
+    if (!geniusBrain || !psychicAnalyzer) {
+        return "Phantom mode not initialized";
+    }
+    
+    // Phase 1: Psychic analysis
+    auto mindReading = psychicAnalyzer->readInterviewerMind();
+    auto predictions = psychicAnalyzer->predictNextQuestions(3);
+    
+    // Phase 2: Genius response generation
+    auto response = psychicAnalyzer->generateOptimalResponse(question);
+    
+    // Phase 3: Quantum overlay display
+    if (quantumOverlay && quantumOverlay->isQuantumFieldActive()) {
+        quantumOverlay->renderQuantumText(response, 50, 100);
+    }
+    
+    // Phase 4: Emergency protocols
+    if (mindReading.isSkeptical || mindReading.satisfaction_level < 0.3) {
+        phantomCloak->triggerEmergencyCloak();
+        quantumOverlay->emergencyPhaseShift();
+    }
+    
+    return response;
+}
+
 int main(int argc, char* argv[]) {
     // Parse command line arguments
     CommandLineArgs args = parseArguments(argc, argv);
@@ -281,6 +352,20 @@ int main(int argc, char* argv[]) {
         if (args.noStealth) {
             g_controller->enableStealthMode(false);
             std::cout << "🔓 Stealth mode disabled (debug mode)" << std::endl;
+        }
+
+                if (config.phantom_mode) {
+            std::cout << "🔮 Activating PHANTOM MODE..." << std::endl;
+            if (!initializePhantomMode()) {
+                std::cerr << "❌ Failed to initialize PHANTOM MODE" << std::endl;
+                return 1;
+            }
+            
+            // Calibrate to interviewer
+            if (!config.company.empty() && !config.role.empty()) {
+                psychicAnalyzer->profileInterviewer(config.company, config.role);
+                geniusBrain->calibrateToInterviewer(config.company, config.role);
+            }
         }
         
         // Initialize the system
