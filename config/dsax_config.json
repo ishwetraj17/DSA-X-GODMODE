@@ -1,0 +1,370 @@
+{
+  "system_info": {
+    "name": "DSA-X GODMODE++",
+    "version": "1.0.0",
+    "description": "Ultra-Stealth AI Assistant for Technical Interviews",
+    "author": "Shwet Raj",
+    "build_date": "2024-01-20"
+  },
+  
+  "audio_capture": {
+    "enabled": true,
+    "sample_rate": 16000,
+    "channels": 1,
+    "buffer_size": 4096,
+    "device_name": "auto",
+    "enable_vad": true,
+    "vad_threshold": 0.01,
+    "noise_reduction": true,
+    "auto_gain_control": true,
+    "echo_cancellation": false,
+    "capture_timeout_ms": 30000,
+    "min_audio_length_ms": 500,
+    
+    "platform_specific": {
+      "macos": {
+        "device_name": "BlackHole 2ch",
+        "use_core_audio": true,
+        "low_latency_mode": true
+      },
+      "windows": {
+        "device_name": "CABLE Output (VB-Audio Virtual Cable)",
+        "use_wasapi": true,
+        "exclusive_mode": false
+      },
+      "linux": {
+        "device_name": "default",
+        "use_alsa": true,
+        "pulseaudio_enabled": true
+      }
+    }
+  },
+  
+  "speech_to_text": {
+    "enabled": true,
+    "engine": "whisper",
+    "model_path": "./models/whisper/ggml-base.en.bin",
+    "language": "en",
+    "num_threads": 4,
+    "enable_timestamps": false,
+    "vad_threshold": 0.6,
+    "enable_translation": false,
+    "use_gpu": true,
+    "ram_only_mode": true,
+    "confidence_threshold": 0.7,
+    "max_segment_length": 30,
+    "temperature": 0.0,
+    "best_of": 1,
+    "beam_size": 1,
+    
+    "fallback_engines": [
+      "system_stt",
+      "online_api"
+    ],
+    
+    "text_cleaning": {
+      "remove_filler_words": true,
+      "fix_common_errors": true,
+      "normalize_punctuation": true,
+      "remove_excessive_repetition": true
+    }
+  },
+  
+  "llm_processing": {
+    "prompt_classifier": {
+      "enabled": true,
+      "confidence_threshold": 0.8,
+      "use_keyword_matching": true,
+      "use_ml_classification": false,
+      "update_patterns_interval": 3600,
+      
+      "question_types": [
+        "DSA_ARRAY",
+        "DSA_LINKED_LIST", 
+        "DSA_TREE",
+        "DSA_GRAPH",
+        "DSA_DYNAMIC_PROGRAMMING",
+        "DSA_SORTING",
+        "DSA_SEARCHING",
+        "SYSTEM_DESIGN",
+        "BEHAVIORAL_STAR",
+        "OOP_DESIGN",
+        "OS_CONCEPTS",
+        "DBMS_CONCEPTS",
+        "NETWORKING",
+        "CODING_GENERAL"
+      ],
+      
+      "programming_languages": [
+        "JAVA",
+        "CPP",
+        "PYTHON",
+        "JAVASCRIPT",
+        "CSHARP",
+        "GO",
+        "RUST"
+      ]
+    },
+    
+    "answer_generator": {
+      "enabled": true,
+      "response_style": "professional",
+      "include_code_examples": true,
+      "include_complexity_analysis": true,
+      "include_hints": true,
+      "max_response_length": 2000,
+      "preferred_language": "auto",
+      
+      "template_settings": {
+        "use_structured_responses": true,
+        "include_explanations": true,
+        "show_alternative_approaches": true,
+        "provide_edge_cases": true
+      },
+      
+      "optimization": {
+        "cache_responses": true,
+        "cache_size": 1000,
+        "use_template_matching": true,
+        "template_update_interval": 7200
+      }
+    }
+  },
+  
+  "overlay_system": {
+    "enabled": true,
+    "gpu_rendering": true,
+    "screen_share_invisible": true,
+    "fade_in_ms": 500,
+    "fade_out_ms": 300,
+    "opacity": 0.85,
+    "font_family": "Consolas",
+    "font_size": 14,
+    "max_display_time_ms": 30000,
+    "auto_hide_delay_ms": 10000,
+    
+    "position": {
+      "anchor": "top_right",
+      "offset_x": -50,
+      "offset_y": 50,
+      "max_width": 500,
+      "max_height": 400
+    },
+    
+    "styling": {
+      "background_color": "rgba(0, 0, 0, 0.7)",
+      "text_color": "rgba(0, 255, 77, 0.9)",
+      "border_color": "rgba(0, 255, 77, 0.3)",
+      "border_width": 1,
+      "corner_radius": 8,
+      "padding": 15
+    },
+    
+    "platform_specific": {
+      "macos": {
+        "use_metal": true,
+        "window_level": "floating",
+        "collection_behavior": "stationary"
+      },
+      "windows": {
+        "use_directx": true,
+        "layered_window": true,
+        "click_through": true
+      },
+      "linux": {
+        "use_opengl": true,
+        "composite_manager": "auto"
+      }
+    }
+  },
+  
+  "stealth_system": {
+    "enabled": true,
+    "process_cloaking": true,
+    "anti_debugging": true,
+    "anti_screen_capture": true,
+    "memory_protection": true,
+    "scan_interval_ms": 1000,
+    "max_evasion_attempts": 3,
+    "stealth_level": "high",
+    
+    "threat_detection": {
+      "monitor_processes": true,
+      "monitor_network": false,
+      "monitor_file_access": false,
+      "monitor_registry": false,
+      
+      "suspicious_processes": [
+        "debugger", "monitor", "capture", "record", 
+        "obs", "fraps", "bandicam", "zoom", "teams",
+        "ida", "olly", "x64dbg", "cheatengine"
+      ]
+    },
+    
+    "evasion_strategies": {
+      "randomize_timing": true,
+      "minimize_footprint": true,
+      "spoof_process_info": false,
+      "hide_from_task_manager": false,
+      "clear_sensitive_memory": true
+    }
+  },
+  
+  "self_healing": {
+    "enabled": true,
+    "auto_recovery": true,
+    "redundancy_systems": true,
+    "backup_systems": true,
+    "health_check_interval_ms": 2000,
+    "recovery_delay_ms": 5000,
+    "max_recovery_attempts": 3,
+    
+    "backup_settings": {
+      "create_backups": true,
+      "backup_interval_minutes": 30,
+      "max_backup_files": 10,
+      "backup_configuration": true,
+      "backup_system_state": true
+    },
+    
+    "monitoring": {
+      "monitor_cpu_usage": true,
+      "monitor_memory_usage": true,
+      "monitor_component_health": true,
+      "alert_on_failure": false,
+      "log_health_metrics": true
+    }
+  },
+  
+  "fallback_systems": {
+    "enabled": true,
+    "clipboard_monitoring": true,
+    "ocr_text_capture": true,
+    "manual_input": true,
+    
+    "clipboard": {
+      "poll_interval_ms": 500,
+      "text_length_threshold": 10,
+      "ignore_short_clips": true,
+      "filter_duplicates": true,
+      "cleanup_interval_ms": 60000
+    },
+    
+    "ocr": {
+      "engine": "tesseract",
+      "languages": ["eng"],
+      "screen_region": "auto",
+      "confidence_threshold": 0.6,
+      "preprocessing": true,
+      "text_filtering": true
+    }
+  },
+  
+  "security": {
+    "encryption": {
+      "encrypt_memory": false,
+      "encrypt_storage": false,
+      "encryption_algorithm": "AES-256"
+    },
+    
+    "permissions": {
+      "require_admin": false,
+      "request_accessibility": true,
+      "request_microphone": true,
+      "request_screen_recording": false
+    }
+  },
+  
+  "performance": {
+    "optimization_level": "balanced",
+    "max_cpu_usage": 25.0,
+    "max_memory_usage_mb": 512,
+    "thread_pool_size": 4,
+    "enable_performance_monitoring": true,
+    
+    "caching": {
+      "enable_audio_cache": true,
+      "enable_text_cache": true,
+      "enable_response_cache": true,
+      "cache_cleanup_interval_ms": 300000
+    }
+  },
+  
+  "logging": {
+    "enabled": false,
+    "level": "INFO",
+    "file_logging": false,
+    "console_logging": true,
+    "max_log_file_size_mb": 10,
+    "max_log_files": 5,
+    "log_directory": "./logs",
+    
+    "categories": {
+      "audio": "INFO",
+      "stt": "INFO", 
+      "llm": "INFO",
+      "overlay": "INFO",
+      "stealth": "WARN",
+      "healing": "INFO"
+    }
+  },
+  
+  "networking": {
+    "enabled": false,
+    "api_endpoints": {
+      "primary": "",
+      "fallback": "",
+      "backup": ""
+    },
+    "timeout_ms": 5000,
+    "retry_attempts": 3,
+    "use_ssl": true
+  },
+  
+  "development": {
+    "debug_mode": false,
+    "verbose_output": false,
+    "enable_metrics": true,
+    "performance_profiling": false,
+    "memory_leak_detection": false,
+    
+    "testing": {
+      "enable_test_mode": false,
+      "mock_audio_input": false,
+      "mock_stt_responses": false,
+      "test_data_directory": "./test_data"
+    }
+  },
+  
+  "ui": {
+    "show_tray_icon": false,
+    "show_console_window": true,
+    "enable_hotkeys": true,
+    "hotkeys": {
+      "toggle_system": "Ctrl+Alt+D",
+      "force_process": "Ctrl+Alt+P",
+      "emergency_hide": "Ctrl+Alt+H",
+      "show_metrics": "Ctrl+Alt+M"
+    }
+  },
+  
+  "compatibility": {
+    "minimum_os_version": {
+      "windows": "10.0",
+      "macos": "10.14",
+      "linux": "18.04"
+    },
+    
+    "required_dependencies": [
+      "whisper.cpp",
+      "audio_drivers",
+      "gpu_drivers"
+    ],
+    
+    "optional_dependencies": [
+      "tesseract",
+      "opencv",
+      "cuda_runtime"
+    ]
+  }
+}
