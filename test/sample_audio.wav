@@ -1,0 +1,22 @@
+# DSA-X GODMODE++: Ultra-Stealth AI Assistant
+# Sample Audio Test File Placeholder
+# 
+# Implemented by Shwet Raj
+# Debug checkpoint: Audio testing and validation
+#
+# This file serves as a placeholder for sample audio testing
+# The actual WAV file would contain test audio for:
+# - Whisper.cpp validation
+# - Audio capture testing
+# - STT accuracy verification
+# - Fallback mechanism testing
+#
+# Test Scenarios:
+# - DSA algorithm questions
+# - System design prompts
+# - STAR behavioral questions
+# - Technical interview scenarios
+#
+# Audio Format: 16kHz, mono, 16-bit PCM
+# Duration: 30 seconds
+# Content: Various interview question types
